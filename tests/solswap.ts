@@ -108,6 +108,42 @@ export const initializeProgram = async (
   return txHash;
 };
 
+export const swapToken = async (
+  wallet: Keypair
+): Promise<any> => {
+  if (wallet.publicKey === null) throw new Error();
+  const program = getProgram();
+  const txHash = await program.methods.swapSolToToken(new anchor.BN(100000000),new anchor.BN(0),new anchor.BN(500), new anchor.BN(100))
+    .accounts({
+      authority: wallet.publicKey,
+      pool: await keys.getPoolKey(),
+      botrole: await keys.getBotRoleKey(),
+
+      wsolMint: Constants.SPL_TOKEN_MINT,
+      tokenProgram: TOKEN_PROGRAM_ID,
+    })
+    .rpc();
+
+  if (txHash != null) {
+    console.log(
+      "Confirming Transaction ..."
+    );
+
+    // showToast("Confirming Transaction ...", 10000, 2);
+    let res = await connection.confirmTransaction(txHash);
+    if (res.value.err) {
+      console.log("Trasaction Failed");
+      // showToast("Transaction Failed", 2000, 1);
+    } else {
+      console.log("Trasaction Confirmed");
+    }
+  } else {
+    console.log("Trasaction Failed");
+    // showToast("Transaction Failed", 2000, 1);
+  }
+  return txHash;
+};
+
 
 describe("solswap", () => {
   it("Is initialized!", async () => {
@@ -115,4 +151,11 @@ describe("solswap", () => {
     const res = await initializeProgram(wallet);
     console.log("hxhash:", res);
   });
+
+  it("token swap!", async () => {
+    let wallet = Keypair.fromSecretKey(secretKey);
+    const res = await initializeProgram(wallet);
+    console.log("hxhash:", res);
+  });
+
 });
