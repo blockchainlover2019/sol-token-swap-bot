@@ -10,7 +10,7 @@ export const BOTROLE_SEED = "BOTROLE_SEED";
 // todo: correct it
 
 export const PROGRAM_ID = new PublicKey(
-  "68TroHDJgubg8tGxKNpCe667nSGuyaksixHEEGaNY6nt"
+  "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 );
 
 export const SPL_TOKEN_MINT = new PublicKey(

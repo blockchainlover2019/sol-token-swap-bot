@@ -2,12 +2,13 @@
 seeds = false
 skip-lint = false
 [programs.localnet]
-solswap = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
+
 [programs.devnet]
-solswap = "68TroHDJgubg8tGxKNpCe667nSGuyaksixHEEGaNY6nt"
+solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 
 [programs.mainnet]
-solswap = "68TroHDJgubg8tGxKNpCe667nSGuyaksixHEEGaNY6nt"
+solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 
 [registry]
 url = "https://api.apr.dev"
