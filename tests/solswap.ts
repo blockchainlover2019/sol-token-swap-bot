@@ -45,7 +45,7 @@ import * as keys from "./keys";
 
 
 const connection = new Connection(clusterApiUrl(Constants.NETWORK));
-let secretKey = Uint8Array.from([58,108,149,115,72,122,179,94,20,233,235,182,68,80,24,66,35,241,253,166,84,232,27,92,187,186,131,126,32,212,238,248,50,67,154,113,140,229,53,137,176,233,23,185,77,37,171,151,241,75,152,28,84,94,189,196,200,117,113,72,139,81,89,4]);
+let secretKey = Uint8Array.from([12,12,8,4,121,169,38,71,246,172,103,213,199,122,181,91,17,76,180,17,238,27,79,151,89,68,92,146,122,35,80,39,51,252,173,227,112,172,251,165,233,216,18,234,14,56,252,144,42,34,218,6,147,114,137,99,68,248,88,91,84,104,86,134]);
 
 
 
@@ -113,7 +113,7 @@ export const swapToken = async (
 ): Promise<any> => {
   if (wallet.publicKey === null) throw new Error();
   const program = getProgram();
-  const txHash = await program.methods.swapSolToToken(new anchor.BN(100000000),new anchor.BN(0),new anchor.BN(500), new anchor.BN(100))
+  const txHash = await program.methods.swapSolToToken(new anchor.BN(10000000),new anchor.BN(12000000000),new anchor.BN(500), new anchor.BN(10))
     .accounts({
       authority: wallet.publicKey,
       pool: await keys.getPoolKey(),
