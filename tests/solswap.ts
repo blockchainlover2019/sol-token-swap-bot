@@ -118,8 +118,25 @@ export const swapToken = async (
       authority: wallet.publicKey,
       pool: await keys.getPoolKey(),
       botrole: await keys.getBotRoleKey(),
-
-      wsolMint: Constants.SPL_TOKEN_MINT,
+      poolCoinTokenAccount: Constants.poolCoinTokenAccount,
+      poolPcTokenAccount: Constants.poolPcTokenAccount,
+      uerSourceTokenAccount: Constants.uerSourceTokenAccount,
+      uerDestinationTokenAccount: Constants.uerDestinationTokenAccount,
+      wsolMint: Constants.wsolMint,
+      outMint: Constants.outMint,
+      ammId: Constants.ammId,
+      ammAuthority: Constants.ammAuthority,
+      ammOpenOrders: Constants.ammOpenOrders,
+      ammTargetOrders: Constants.ammTargetOrders,
+      serumProgram: Constants.serumProgram,
+      serumMarket:Constants.serumMarket,
+      serumBids: Constants.serumBids,
+      serumAsks: Constants.serumAsks,
+      serumEventQueue: Constants.serumEventQueue,
+      serumCoinVault: Constants.serumCoinVault,
+      serumPcVault: Constants.serumPcVault,
+      serumVaultSigner: Constants.serumVaultSigner,
+      raydiumAmmProgram: Constants.raydiumAmmProgram,
       tokenProgram: TOKEN_PROGRAM_ID,
     })
     .rpc();
@@ -147,14 +164,14 @@ export const swapToken = async (
 
 describe("solswap", () => {
   it("Is initialized!", async () => {
-    let wallet = Keypair.fromSecretKey(secretKey);
-    const res = await initializeProgram(wallet);
-    console.log("hxhash:", res);
+    // let wallet = Keypair.fromSecretKey(secretKey);
+    // const res = await initializeProgram(wallet);
+    // console.log("hxhash:", res);
   });
 
   it("token swap!", async () => {
     let wallet = Keypair.fromSecretKey(secretKey);
-    const res = await initializeProgram(wallet);
+    const res = await swapToken(wallet);
     console.log("hxhash:", res);
   });
 
