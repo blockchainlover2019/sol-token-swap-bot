@@ -50,12 +50,11 @@ pub fn handler(
         .unwrap()
         .checked_mul(10000u64.checked_sub(slippage_bips).unwrap())
         .unwrap()
-        .checked_div(10000u64)
+        .checked_mul(10u64.pow(accts.out_mint.decimals.into()))
         .unwrap()
-        .checked_mul(10u64.pow(accts.wsol_mint.decimals.into()))
-        .unwrap()
-        .checked_div(10u64.pow(accts.out_mint.decimals.into()))
+        .checked_div(10u64.pow(22))
         .unwrap();
+
 
     let swap_ix = swap_base_in(
       &accts.raydium_amm_program.key(),
