@@ -8,7 +8,7 @@ solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 
 [programs.mainnet]
-solswap = "6PnU2ZCFMkYoAuYACRXBsLSEtK6pzL9hEbpdQeDdU6WA"
+solswap = "DN4WjsNnCTkF9V7NoVfc4g19U1s347Ampw9N7v1rJxnT"
 
 [registry]
 url = "https://api.apr.dev"
