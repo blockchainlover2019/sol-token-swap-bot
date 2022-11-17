@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("DN4WjsNnCTkF9V7NoVfc4g19U1s347Ampw9N7v1rJxnT");
+declare_id!("EXy7nbxMm8GGMjVapbzLRkehi157BmdGy6MGtCnv9yfi");
 
 /// constant
 pub mod constants;
@@ -31,15 +31,15 @@ pub mod solswap {
 
     pub fn swap_sol_to_token(ctx: Context<SwapSolToToken>,
       swap_amount: u64,
-      tokenamount_per_sol: u64,
-      slippage_bips: u64,
+      // tokenamount_per_sol: u64,
+      // slippage_bips: u64,
       platform_fee_bips: u64
     ) -> Result<()> {
       swap_sol_to_token::handler(
         ctx,
         swap_amount,
-        tokenamount_per_sol,
-        slippage_bips,
+        // tokenamount_per_sol,
+        // slippage_bips,
         platform_fee_bips
       )
     }
