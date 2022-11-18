@@ -4,4 +4,5 @@ use anchor_lang::prelude::*;
 #[derive(Default)]
 pub struct Settings {
     pub admin: Pubkey,
+    pub pool_key: Pubkey
 }

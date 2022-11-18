@@ -1,6 +1,9 @@
 use crate::{constants::*, states::*};
 use anchor_lang::prelude::*;
-
+use anchor_lang::solana_program::{
+  program::{invoke, invoke_signed},
+  system_instruction,
+};
 use anchor_spl::{
   token::{self, Mint, Token, TokenAccount, Transfer},
 };
@@ -23,18 +26,9 @@ pub struct WithdrawPlatformFee<'info> {
       seeds = [POOL_SEED],
       bump
     )]
-    pub pool: Account<'info, TokenAccount>, 
+    /// CHECK:
+    pub pool: AccountInfo<'info>, 
 
-    #[account(
-      mut, 
-      associated_token::authority = admin,
-      associated_token::mint = wsol_mint
-    )]
-    pub user_wsol_ata: Box<Account<'info, TokenAccount>>,
-
-    pub wsol_mint: Account<'info, Mint>,
-
-    pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
     pub rent: Sysvar<'info, Rent>,
 }
@@ -42,17 +36,16 @@ pub struct WithdrawPlatformFee<'info> {
 pub fn handler(ctx: Context<WithdrawPlatformFee>) -> Result<()> {
     let accts = ctx.accounts;
     let signer_seeds: &[&[&[u8]]] = &[&[POOL_SEED.as_ref(), &[*ctx.bumps.get("pool").unwrap()]]];
-    token::transfer(
-      CpiContext::new_with_signer(
-        accts.token_program.to_account_info(),
-        Transfer {
-            from: accts.pool.to_account_info(),
-            to: accts.user_wsol_ata.to_account_info(),
-            authority: accts.pool.to_account_info(),
-        },
-        signer_seeds
-      ),
-      accts.pool.amount
-    ).ok();
+
+    invoke_signed(
+      &system_instruction::transfer(&accts.pool.key(), &accts.admin.key(), accts.pool.lamports()),
+      &[
+          accts.pool.to_account_info(),
+          accts.admin.to_account_info(),
+          accts.system_program.to_account_info(),
+      ],
+      signer_seeds,
+    )?;
+    
     Ok(())
 }

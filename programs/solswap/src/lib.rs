@@ -29,13 +29,13 @@ pub mod solswap {
       remove_botrole::handler(ctx, addr)
     }
 
-    pub fn swap_sol_to_token(ctx: Context<SwapSolToToken>,
+    pub fn charge_sol_fee(ctx: Context<ChargeSolFee>,
       swap_amount: u64,
       // tokenamount_per_sol: u64,
       // slippage_bips: u64,
       platform_fee_bips: u64
     ) -> Result<()> {
-      swap_sol_to_token::handler(
+      charge_sol_fee::handler(
         ctx,
         swap_amount,
         // tokenamount_per_sol,

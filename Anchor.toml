@@ -1,8 +1,8 @@
 [features]
 seeds = false
-skip-lint = false
+
 [programs.localnet]
-solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
+solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 
 [programs.devnet]
 solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
@@ -11,10 +11,10 @@ solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 
 [registry]
-url = "https://api.apr.dev"
+url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "tests/test.json"
 
 [scripts]
