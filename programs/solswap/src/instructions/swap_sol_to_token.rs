@@ -143,17 +143,17 @@ pub struct SwapSolToToken<'info> {
     )]
     pub botrole: Account<'info, BotRole>, 
 
-    #[account(
-        mut, 
-        constraint = pool_coin_token_account.mint == wsol_mint.key()
-    )]
-    pub pool_coin_token_account: Box<Account<'info, TokenAccount>>,
+    // #[account(
+    //     mut, 
+    //     constraint = pool_coin_token_account.mint == wsol_mint.key()
+    // )]
+    // pub pool_coin_token_account: Box<Account<'info, TokenAccount>>,
     
-    #[account(
-        mut,
-        constraint = pool_pc_token_account.mint == out_mint.key()
-    )]
-    pub pool_pc_token_account: Box<Account<'info, TokenAccount>>,
+    // #[account(
+    //     mut,
+    //     constraint = pool_pc_token_account.mint == out_mint.key()
+    // )]
+    // pub pool_pc_token_account: Box<Account<'info, TokenAccount>>,
 
     #[account(
         mut, 
@@ -162,63 +162,63 @@ pub struct SwapSolToToken<'info> {
     )]
     pub uer_source_token_account: Box<Account<'info, TokenAccount>>,
 
-    #[account(
-        mut, 
-        associated_token::authority = authority, 
-        associated_token::mint = out_mint
-    )]
-    pub uer_destination_token_account: Box<Account<'info, TokenAccount>>,
+    // #[account(
+    //     mut, 
+    //     associated_token::authority = authority, 
+    //     associated_token::mint = out_mint
+    // )]
+    // pub uer_destination_token_account: Box<Account<'info, TokenAccount>>,
     
     #[account(mut)]
     pub wsol_mint: Box<Account<'info, Mint>>,
 
-    #[account(mut)]
-    pub out_mint: Box<Account<'info, Mint>>,
+    // #[account(mut)]
+    // pub out_mint: Box<Account<'info, Mint>>,
 
     
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub amm_id: AccountInfo<'info>,
-    /// CHECK: raydium will check
-    pub amm_authority: AccountInfo<'info>,
-    /// CHECK: raydium will check
-    #[account(mut)]
-    pub amm_open_orders: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub amm_id: AccountInfo<'info>,
+    // /// CHECK: raydium will check
+    // pub amm_authority: AccountInfo<'info>,
+    // /// CHECK: raydium will check
+    // #[account(mut)]
+    // pub amm_open_orders: AccountInfo<'info>,
 
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub amm_target_orders: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub amm_target_orders: AccountInfo<'info>,
     
-    /// CHECK: raydium will check
-    pub serum_program: AccountInfo<'info>,
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_market: AccountInfo<'info>,
+    // /// CHECK: raydium will check
+    // pub serum_program: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_market: AccountInfo<'info>,
 
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_bids: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_bids: AccountInfo<'info>,
     
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_asks: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_asks: AccountInfo<'info>,
     
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_event_queue: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_event_queue: AccountInfo<'info>,
     
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_coin_vault: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_coin_vault: AccountInfo<'info>,
     
-    #[account(mut)]
-    /// CHECK: raydium will check
-    pub serum_pc_vault: AccountInfo<'info>,
+    // #[account(mut)]
+    // /// CHECK: raydium will check
+    // pub serum_pc_vault: AccountInfo<'info>,
 
-    /// CHECK: raydium will check
-    pub serum_vault_signer: AccountInfo<'info>,
+    // /// CHECK: raydium will check
+    // pub serum_vault_signer: AccountInfo<'info>,
     
     /// CHECK: raydium will check
-    pub raydium_amm_program: AccountInfo<'info>,
+    // pub raydium_amm_program: AccountInfo<'info>,
     pub token_program: Program<'info, Token>
 }

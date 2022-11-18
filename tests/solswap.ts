@@ -63,6 +63,27 @@ export const getProgram = () => {
 
 };
 
+import { PublicKey } from '@solana/web3.js';
+import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
+
+const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
+  'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
+);
+
+export const findAssociatedTokenAddress =  async (
+    walletAddress: PublicKey,
+    tokenMintAddress: PublicKey
+): Promise<PublicKey> => {
+    return (await PublicKey.findProgramAddress(
+        [
+            walletAddress.toBuffer(),
+            TOKEN_PROGRAM_ID.toBuffer(),
+            tokenMintAddress.toBuffer(),
+        ],
+        SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
+    ))[0];
+}
+
 export const initializeProgram = async (
   wallet: Keypair
 ): Promise<string> => {
@@ -108,35 +129,76 @@ export const initializeProgram = async (
   return txHash;
 };
 
+let wrappedSolAccount: PublicKey | null = null;
+
+export const getTokenAccount = async (
+  wallet: Keypair,
+) => {
+  const wrappedSolAccount = await createTokenAccountIfNotExist(
+    connection,
+    wrappedSolAccount,
+    owner,
+    TOKENS.WSOL.mintAddress,
+    getBigNumber(amountIn.wei) + 1e7,
+    transaction,
+    signers
+  );
+};
+
+export async function createTokenAccountIfNotExist(
+  connection: Connection,
+  account: string | undefined | null,
+  owner: PublicKey,
+  mintAddress: string,
+  lamports: number | null,
+
+  transaction: Transaction,
+  signer: Array<Account>
+) {
+  let publicKey
+
+  if (account) {
+    publicKey = new PublicKey(account)
+  } else {
+    publicKey = await createProgramAccountIfNotExist(
+      connection,
+      account,
+      owner,
+      TOKEN_PROGRAM_ID,
+      lamports,
+      ACCOUNT_LAYOUT,
+      transaction,
+      signer
+    )
+
+    transaction.add(
+      initializeAccount({
+        account: publicKey,
+        mint: new PublicKey(mintAddress),
+        owner
+      })
+    )
+  }
+
+  return publicKey
+}
+
 export const swapToken = async (
   wallet: Keypair
 ): Promise<any> => {
   if (wallet.publicKey === null) throw new Error();
   const program = getProgram();
-  const txHash = await program.methods.swapSolToToken(new anchor.BN(10000000),new anchor.BN(12000000000),new anchor.BN(500), new anchor.BN(10))
+  const res = await findAssociatedTokenAddress(wallet.publicKey, Constants.wsolMint);
+  console.log("token account:", res);  
+  const txHash = await program.methods.swapSolToToken(new anchor.BN(10000000), new anchor.BN(10))
     .accounts({
       authority: wallet.publicKey,
       pool: await keys.getPoolKey(),
       botrole: await keys.getBotRoleKey(),
-      poolCoinTokenAccount: Constants.poolCoinTokenAccount,
-      poolPcTokenAccount: Constants.poolPcTokenAccount,
-      uerSourceTokenAccount: Constants.uerSourceTokenAccount,
-      uerDestinationTokenAccount: Constants.uerDestinationTokenAccount,
+      
+      uerSourceTokenAccount: res,
+      
       wsolMint: Constants.wsolMint,
-      outMint: Constants.outMint,
-      ammId: Constants.ammId,
-      ammAuthority: Constants.ammAuthority,
-      ammOpenOrders: Constants.ammOpenOrders,
-      ammTargetOrders: Constants.ammTargetOrders,
-      serumProgram: Constants.serumProgram,
-      serumMarket:Constants.serumMarket,
-      serumBids: Constants.serumBids,
-      serumAsks: Constants.serumAsks,
-      serumEventQueue: Constants.serumEventQueue,
-      serumCoinVault: Constants.serumCoinVault,
-      serumPcVault: Constants.serumPcVault,
-      serumVaultSigner: Constants.serumVaultSigner,
-      raydiumAmmProgram: Constants.raydiumAmmProgram,
       tokenProgram: TOKEN_PROGRAM_ID,
     })
     .rpc();
@@ -174,5 +236,7 @@ describe("solswap", () => {
     const res = await swapToken(wallet);
     console.log("hxhash:", res);
   });
+
+  
 
 });

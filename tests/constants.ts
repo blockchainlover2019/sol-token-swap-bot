@@ -10,31 +10,23 @@ export const BOTROLE_SEED = "BOTROLE_SEED";
 // todo: correct it
 
 export const PROGRAM_ID = new PublicKey(
-  "EXy7nbxMm8GGMjVapbzLRkehi157BmdGy6MGtCnv9yfi"
+  "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 );
 
 export const SPL_TOKEN_MINT = new PublicKey(
   "So11111111111111111111111111111111111111112"
 );
 
-export const poolCoinTokenAccount = new PublicKey(
-  "DQyrAcCrDXQ7NeoqGgDCZwBvWDcYmFCjSb9JtteuvPpz"
-);
 
-export const poolPcTokenAccount = new PublicKey(
-  "HLmqeL62xR1QoZ1HKKbXRrdN1p3phKpxRMb2VVopvBBz"
-);
 
-export const uerSourceTokenAccount = new PublicKey(
-  "So11111111111111111111111111111111111111112"
-);
 
-export const uerDestinationTokenAccount = new PublicKey(
-  "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
-);
+
+// export const uerDestinationTokenAccount = new PublicKey(
+//   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+// );
 
 export const wsolMint = new PublicKey(
-  "So11111111111111111111111111111111111111112"
+  "11111111111111111111111111111111"
 );
 
 export const outMint = new PublicKey(

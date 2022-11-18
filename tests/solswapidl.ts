@@ -119,98 +119,13 @@ export type Solswap = {
           "isSigner": false
         },
         {
-          "name": "poolCoinTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "poolPcTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "uerSourceTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "uerDestinationTokenAccount",
           "isMut": true,
           "isSigner": false
         },
         {
           "name": "wsolMint",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "outMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammId",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammAuthority",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "ammOpenOrders",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammTargetOrders",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "serumMarket",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumBids",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumAsks",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumEventQueue",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumCoinVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumPcVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumVaultSigner",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "raydiumAmmProgram",
-          "isMut": false,
           "isSigner": false
         },
         {
@@ -222,14 +137,6 @@ export type Solswap = {
       "args": [
         {
           "name": "swapAmount",
-          "type": "u64"
-        },
-        {
-          "name": "tokenamountPerSol",
-          "type": "u64"
-        },
-        {
-          "name": "slippageBips",
           "type": "u64"
         },
         {
@@ -453,98 +360,13 @@ export const IDL: Solswap = {
           "isSigner": false
         },
         {
-          "name": "poolCoinTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "poolPcTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "uerSourceTokenAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "uerDestinationTokenAccount",
           "isMut": true,
           "isSigner": false
         },
         {
           "name": "wsolMint",
           "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "outMint",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammId",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammAuthority",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "ammOpenOrders",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "ammTargetOrders",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumProgram",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "serumMarket",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumBids",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumAsks",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumEventQueue",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumCoinVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumPcVault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "serumVaultSigner",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "raydiumAmmProgram",
-          "isMut": false,
           "isSigner": false
         },
         {
@@ -556,14 +378,6 @@ export const IDL: Solswap = {
       "args": [
         {
           "name": "swapAmount",
-          "type": "u64"
-        },
-        {
-          "name": "tokenamountPerSol",
-          "type": "u64"
-        },
-        {
-          "name": "slippageBips",
           "type": "u64"
         },
         {

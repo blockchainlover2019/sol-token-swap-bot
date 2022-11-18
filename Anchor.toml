@@ -5,16 +5,16 @@ skip-lint = false
 solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
 
 [programs.devnet]
-solswap = "BsHD57uBMbq3Xjfuhu5Cqa9FR8xrRKbxSPk8e7rw4pYY"
+solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 
 [programs.mainnet]
-solswap = "EXy7nbxMm8GGMjVapbzLRkehi157BmdGy6MGtCnv9yfi"
+solswap = "9fuV5utLoM5U81FQoiZLYB3moJzyJcV477cTpDYArmV1"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "mainnet"
+cluster = "devnet"
 wallet = "tests/test.json"
 
 [scripts]
