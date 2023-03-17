@@ -11,14 +11,12 @@ export const getSettingsKey = async () => {
     [Buffer.from(SETTINGS_SEED)],
     PROGRAM_ID
   );
-  console.log("settingsKey:", settingsKey);
   
   return settingsKey;
 };
 
 export const getPoolKey = async () => {
   const [poolKey] = await asyncGetPda([Buffer.from(POOL_SEED)], PROGRAM_ID);
-  console.log("poolKey:", poolKey);
   return poolKey;
 };
 
@@ -27,7 +25,6 @@ export const getBotRoleKey = async () => {
     [Buffer.from(BOTROLE_SEED)],
     PROGRAM_ID
   );
-  console.log("botroleKey:", botroleKey);
   return botroleKey;
 };
 
