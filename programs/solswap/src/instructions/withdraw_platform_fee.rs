@@ -38,7 +38,7 @@ pub fn handler(ctx: Context<WithdrawPlatformFee>) -> Result<()> {
     let signer_seeds: &[&[&[u8]]] = &[&[POOL_SEED.as_ref(), &[*ctx.bumps.get("pool").unwrap()]]];
 
     invoke_signed(
-      &system_instruction::transfer(&accts.pool.key(), &accts.admin.key(), accts.pool.lamports()),
+      &system_instruction::transfer(&accts.pool.key(), &accts.admin.key(), accts.pool.lamports() - Rent::get()?.minimum_balance(0)),
       &[
           accts.pool.to_account_info(),
           accts.admin.to_account_info(),
